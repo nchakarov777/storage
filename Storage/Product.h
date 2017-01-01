@@ -21,7 +21,6 @@ public:
 	Product();
 	void input();
 	void output() const;
-
 };
 
 #endif
