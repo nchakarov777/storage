@@ -5,7 +5,7 @@
 class Product
 {
     public:
-        Product();
+        Product(); //DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         Product(const Product& other);
     private:
 };
