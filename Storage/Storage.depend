@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1483361864 source:c:\users\ivo\desktop\storage\storage\product.cpp
+	"Product.h"
+
+1483366809 c:\users\ivo\desktop\storage\storage\product.h
+	<iostream>
+	<string>
+	<cstring>
+
+1483366740 source:c:\users\ivo\desktop\storage\storage\main.cpp
+	<iostream>
+	<string>
+	<cstring>
+	<stdlib.h>
+	"Product.h"
+
