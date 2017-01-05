@@ -12,13 +12,13 @@ using namespace std;
 class Product
 {
 private:
-	string product_name;
-	string exp_date; // dd.mm.yyyy format
-	string entry_date; // dd.mm.yyyy format
-	string producer_name;
+	string productName;
+	string expDate; // dd.mm.yyyy format
+	string entryDate; // dd.mm.yyyy format
+	string producerName;
 	string unit;
 	double quantity;
-	string isp_input; //sektsiq/raft/nomer format
+	string ispInput; //sektsiq/raft/nomer format
 	StoragePlace storagePlace;
 	string comment;
 	string section, shelf, number;

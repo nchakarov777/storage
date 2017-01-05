@@ -13,7 +13,7 @@ private:
 
 public:
     StoragePlace();
-	StoragePlace(int section, int shelf, int number);
+	StoragePlace(int, int, int);
 	int getSection();
 	int getShelf();
 	int getNumber();
