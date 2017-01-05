@@ -23,6 +23,7 @@ private:
 	string comment;
 	string section, shelf, number;
 	void storage_place_processing();
+	bool isValid(string);
 public:
 	Product();
 	void input();

@@ -49,13 +49,44 @@ void Product::storage_place_processing(){
     }
 }
 
+bool Product::isValid(string fullDate){
+    int date, month, year;
+    int len=0, i=0;
+    date = 10*(fullDate[0]-'0') + fullDate[1] - '0';
+    month = 10*(fullDate[3]-'0') + fullDate[4] - '0';
+    year = 1000*(fullDate[6]-'0') + 100*(fullDate[7]-'0') + 10*(fullDate[8] - '0') + fullDate[9] - '0';
+    while(fullDate[i] != '\0'){
+        len++;
+        i++;
+    }
+    if(len>10 || year>2017 || month>12 || date>31 || (((month==4) || (month==6) || (month==9) || (month==11)) && date>30) || (month==2 && date>28) || (fullDate[2]!='.' && fullDate[5]!='.')) return false;
+    else return true;
+}
+
 void Product::input() {
 	cout << "Enter product name: ";
 	cin >> productName;
-	cout << "Enter expiration date (dd.mm.yyyy format): ";
-	cin >> expDate;
-	cout << "Enter date of product's entry (dd.mm.yyyy format): ";
-	cin >> entryDate;
+	do{
+        system("CLS");
+        cout << "Enter product name: " << productName << endl;
+        cout << "Enter expiration date (dd.mm.yyyy format): ";
+        cin >> expDate;
+        if(!isValid(expDate)){
+            cout << "The date you've input is in bad format. Please enter again!\n";
+            system("PAUSE");
+        }
+	}while(!isValid(expDate));
+	do{
+        system("CLS");
+        cout << "Enter product name: " << productName << endl;
+        cout << "Enter expiration date (dd.mm.yyyy format): " << expDate << endl;
+        cout << "Enter date of product's entry (dd.mm.yyyy format): ";
+        cin >> entryDate;
+        if(!isValid(entryDate)){
+            cout << "The date you've input is in bad format. Please enter again!\n";
+            system("PAUSE");
+        }
+	}while(!isValid(entryDate));
 	cout << "Enter producer name: ";
 	cin >> producerName;
 	cout << "Enter quantity and units of the product(e.g. 10 kilograms): ";
@@ -65,9 +96,7 @@ void Product::input() {
 void Product::output() const{
     cout << "Product name: " << productName << endl;
     cout << "Expiration date: " << expDate << endl;
-    //validate date
     cout << "Entry date: " << entryDate << endl;
-    //validate date
     cout << "Producer name: " << producerName << endl;
     cout << "Quantity available : " << quantity << " " << unit << endl;
     cout << "Product's place in store:\n" << "section " << section << "; shelf " << shelf << "; number " << number << endl;
