@@ -13,17 +13,18 @@ class Storage
 private:
 
     int storageSpace[10][10][10];
-	map<string, Product> availableProducts;
-    string getProcuctId(Product);
-    string getProcuctPlaceId(Product);
+    bool availableSpace[10][10][10];
+	map<string, vector<Product>> availableProducts;
+    string getProductId(Product product);
     StoragePlace getStoragePlace(string productId);
 
 public:
 	Storage();
-	void addProduct(Product product);
+	void addProduct(Product);
 	void printAvailableProducts();
     void removeProducts();
     void clearProducts();
+    bool findNewPlaceAndAdd(Product product, string id);
 };
 
 #endif

@@ -36,6 +36,8 @@
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/product.cpp" />
 		<Unit filename="src/product.h" />
+		<Unit filename="src/storage-controller.cpp" />
+		<Unit filename="src/storage-controller.h" />
 		<Unit filename="src/storage-place.cpp" />
 		<Unit filename="src/storage-place.h" />
 		<Unit filename="src/storage.cpp" />

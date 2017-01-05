@@ -34,12 +34,6 @@ void validateAndExecuteCommand(int command){
 
 int main(){
 
-    //newProduct.input();
-    //storage.addProduct(newProduct);
-    //cout << endl; system("pause"); system("CLS");
-    //newProduct.output();
-    //cout << endl; system("pause");
-
     while(!stopMenu){
         printMenu();
         cin>>command;

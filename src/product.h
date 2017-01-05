@@ -13,22 +13,25 @@ class Product
 {
 private:
 	string productName;
-	string expDate; // dd.mm.yyyy format
-	string entryDate; // dd.mm.yyyy format
+	// dd.mm.yyyy format
+	string expDate;
+	string entryDate;
 	string producerName;
 	string unit;
 	double quantity;
-	string ispInput; //sektsiq/raft/nomer format
 	StoragePlace storagePlace;
 	string comment;
-	string section, shelf, number;
-	void storage_place_processing();
 	bool isValid(string);
 public:
 	Product();
 	void input();
-	void output() const;
+	void output();
 	StoragePlace getStoragePlace();
+	string getProductName();
+	string getExpDate();
+	double getQuantity();
+	void setStoragePlace(int, int, int);
+
 };
 
 #endif

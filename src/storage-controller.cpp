@@ -3,12 +3,28 @@
 #include "product.h"
 #include "storage.h"
 
-StorageController::addProduct(){
+StorageController::StorageController(){
+
+}
+
+void StorageController::addProduct(){
     Product newProduct;
     newProduct.input();
     storage.addProduct(newProduct);
 }
 
-StorageController::removeProduct(){
+void StorageController::removeProduct(){
+
+}
+
+void StorageController::listAvailableProducts(){
+
+}
+
+void StorageController::referenceDataRangeWork(){
+
+}
+
+void StorageController::clearOutdatedProducts(){
 
 }

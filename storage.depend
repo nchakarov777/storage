@@ -1,50 +1,19 @@
-# depslib dependency file v1.0
-1483566467 source:c:\users\ivo\desktop\storage\src\product.cpp
-	"product.h"
-	"storage-place.h"
 
-1483644957 c:\users\ivo\desktop\storage\src\product.h
+1483648250 source:c:\users\nikit\desktop\storage\src\main.cpp
+	<iostream>
+	<string>
+	<cstring>
+	<stdlib.h>
+	"storage-controller.h"
+
+1483648249 c:\users\nikit\desktop\storage\src\product.h
 	<iostream>
 	<string>
 	<cstring>
 	<stdlib.h>
 	"storage-place.h"
 
-1483566467 source:c:\users\ivo\desktop\storage\src\main.cpp
-	<iostream>
-	<string>
-	<cstring>
-	<stdlib.h>
-	"Product.h"
-	"storage.h"
-
-1483566467 source:c:\users\ivo\desktop\storage\src\storage.cpp
-	"Storage.h"
-	"storage-place.h"
-	<stdlib.h>
-
-1483566467 c:\users\ivo\desktop\storage\src\storage.h
-	<iostream>
-	<map>
-	<vector>
-	"Product.h"
-
-1483562137 source:c:\users\nikit\desktop\storage\src\main.cpp
-	<iostream>
-	<string>
-	<cstring>
-	<stdlib.h>
-	"Product.h"
-	"storage.h"
-
-1483564176 c:\users\nikit\desktop\storage\src\product.h
-	<iostream>
-	<string>
-	<cstring>
-	<stdlib.h>
-	"storage-place.h"
-
-1483564389 source:c:\users\nikit\desktop\storage\src\product.cpp
+1483648249 source:c:\users\nikit\desktop\storage\src\product.cpp
 	"product.h"
 	"storage-place.h"
 
@@ -62,12 +31,17 @@
 	<vector>
 	"Product.h"
 
-1483563647 c:\users\nikit\desktop\storage\src\storage-place.h
+1483648249 c:\users\nikit\desktop\storage\src\storage-place.h
 	<iostream>
 
-1483642753 c:\users\ivo\desktop\storage\src\storage-place.h
-	<iostream>
 
-1483566467 source:c:\users\ivo\desktop\storage\src\storage-place.cpp
-	"storage-place.h"
+1483648250 c:\users\nikit\desktop\storage\src\storage-controller.h
+	<iostream>
+	"storage.h"
+
+1483648250 source:c:\users\nikit\desktop\storage\src\storage-controller.cpp
+	"storage-controller.h"
+	<iostream>
+	"product.h"
+	"storage.h"
 
