@@ -48,7 +48,8 @@
 	"product.h"
 	"storage-place.h"
 
-1483557633 source:c:\users\nikit\desktop\storage\src\storage-place.cpp
+1483564534 source:c:\users\nikit\desktop\storage\src\storage-place.cpp
+	"storage-place.h"
 
 1483564288 source:c:\users\nikit\desktop\storage\src\storage.cpp
 	"Storage.h"
