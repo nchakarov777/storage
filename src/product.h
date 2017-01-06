@@ -31,6 +31,8 @@ public:
 	string getExpDate();
 	double getQuantity();
 	void setStoragePlace(int, int, int);
+	void setQuantity(double);
+	string getUnit();
 
 };
 

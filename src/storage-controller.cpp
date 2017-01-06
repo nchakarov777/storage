@@ -14,11 +14,17 @@ void StorageController::addProduct(){
 }
 
 void StorageController::removeProduct(){
-
+    cout<<"Enter the name of the product you want to remove: ";
+    string name;
+    cin>>name;
+    cout<<"Enter the quantity you want to remove: ";
+    double quantity;
+    cin>>quantity;
+    storage.removeProducts(name, quantity);
 }
 
 void StorageController::listAvailableProducts(){
-
+    storage.listAvailableProducts();
 }
 
 void StorageController::referenceDataRangeWork(){

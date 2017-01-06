@@ -35,7 +35,7 @@ void Product::input() {
         cout << "Enter expiration date (dd.mm.yyyy format): ";
         cin >> expDate;
         if(!isValid(expDate)){
-            cout << "The date you've input is in bad format. Please enter again!\n";
+            cout << "The exp date you've input is in bad format. Please enter again!\n";
             system("PAUSE");
         }
 	}while(!isValid(expDate));
@@ -46,7 +46,7 @@ void Product::input() {
         cout << "Enter date of product's entry (dd.mm.yyyy format): ";
         cin >> entryDate;
         if(!isValid(entryDate)){
-            cout << "The date you've input is in bad format. Please enter again!\n";
+            cout << "The entry date you've input is in bad format. Please enter again!\n";
             system("PAUSE");
         }
 	}while(!isValid(entryDate));
@@ -84,5 +84,13 @@ double Product::getQuantity(){
 void Product::setStoragePlace(int section, int shelf, int number){
     StoragePlace newStoragePlace(section, shelf, number);
     storagePlace = newStoragePlace;
+}
+
+void Product::setQuantity(double quantity){
+    this->quantity = quantity;
+}
+
+string Product::getUnit(){
+    return unit;
 }
 

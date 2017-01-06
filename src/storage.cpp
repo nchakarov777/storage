@@ -26,25 +26,29 @@ string Storage::getProductId(Product product){
     return id;
 }
 
-bool Storage::findNewPlaceAndAdd(Product product, string id){
+void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product> products){
     for(int i = 0;i<10;i++){
         for(int j = 0;j<10;j++){
             for(int k =0; k<10;k++){
                 if(!availableSpace[i][j][k]){
                     if(storageSpace[i][j][k] >= product.getQuantity()){
                         product.setStoragePlace(i, j, k);
-                        vector<Product> newVector;
-                        newVector.push_back(product);
-                        availableProducts.insert(pair<string, vector<Product>>(id, newVector));
+                        products.push_back(product);
+                        availableProducts.insert(pair<string, vector<Product>>(id, products));
                         availableSpace[i][j][k] = true;
-                        storageSpace[i][j][k] -= product.getQuantity();
-                        return true;
+                        system("CLS");
+                        cout<<"Your product was successfully stored on place "<<i<<"/"<<j<<"/"<<k<<endl;
+                        cout<<"There is "<<storageSpace[i][j][k]-product.getQuantity()<<" "<<product.getUnit()<<" free space in the same number."<<endl;
+                        //TODO to file the addition
+                        return ;
                     }
                 }
             }
         }
     }
-    return false;
+    system("CLS");
+    cout<<"Sorry, either the storage is full, or the quantity you are trying to add is too big."<<endl;
+    return ;
 }
 
 void Storage::addProduct(Product product){
@@ -55,18 +59,50 @@ void Storage::addProduct(Product product){
     {
         cout<<id<<endl;
         products = it->second;
+        int filled = 0;
+        cout<<products.size()<<endl;
         for (unsigned i=0; i < products.size(); i++) {
-            products[i].output();
+            StoragePlace currentPlace = products[i].getStoragePlace();
+
+            double newQuantity = products[i].getQuantity() + product.getQuantity();
+            if( newQuantity <= storageSpace[currentPlace.getSection()][currentPlace.getShelf()][currentPlace.getNumber()]){
+                products[i].setQuantity(newQuantity);
+                system("CLS");
+                cout<<"The product "<<product.getProductName()<<" was stored on place "<<currentPlace.getSection()<<"/"<<currentPlace.getShelf()<<"/"<<currentPlace.getNumber()<<endl;
+                cout<<"There is "<<storageSpace[currentPlace.getSection()][currentPlace.getShelf()][currentPlace.getNumber()]-newQuantity<<" "<<product.getUnit()<<" free space in the same number."<<endl;
+                //TODO to file the addition
+                return;
+            }
         }
+        findNewPlaceAndAdd(product, id, products);
     }else{
-        if(findNewPlaceAndAdd(product, id)){
-            cout<<"Your product was successfully stored. "<<endl;
-        }else{
-            cout<<"Sorry, either the storage is full, or the quantity you are trying to add is too big."<<endl;
+        vector<Product> newVector;
+        findNewPlaceAndAdd(product, id, newVector);
+    }
+}
+
+void Storage::listAvailableProducts(){
+    for(map<string, vector<Product>>::iterator it = availableProducts.begin(); it!=availableProducts.end(); it++ ){
+        vector<Product> products = it->second;
+        for(unsigned i = 0;i<products.size(); i++ ){
+            products[i].output();
         }
     }
 }
 
+void Storage::removeProduct(string name, double quantity){
+    vector<Product> foundProducts;
+    for(map<string, vector<Product>>::iterator it = availableProducts.begin(); it!=availableProducts.end(); it++ ){
+        string id = it->first;
+        if (id.find(name) != string::npos) {
+            foundProducts.push(it->second);
+        }
+    }
+}
 
+vector<Product> Storage::sortByExpiryDate(vector<Product> products){
+    for(unsigned i =0; i<products.size(); i++){
 
+    }
+}
 

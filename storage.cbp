@@ -33,6 +33,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="src/date.cpp" />
+		<Unit filename="src/date.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/product.cpp" />
 		<Unit filename="src/product.h" />
