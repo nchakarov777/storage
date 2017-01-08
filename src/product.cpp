@@ -99,7 +99,7 @@ void Product::output() const{
     cout << "Entry date: " << entryDate << endl;
     cout << "Producer name: " << producerName << endl;
     cout << "Quantity available : " << quantity << " " << unit << endl;
-    cout << "Product's place in store:\n" << "section " << section << "; shelf " << shelf << "; number " << number << endl;
+    //cout << "Product's place in store:\n" << "section " << section << "; shelf " << shelf << "; number " << number << endl;
 }
 
 StoragePlace Product::getStoragePlace(){
