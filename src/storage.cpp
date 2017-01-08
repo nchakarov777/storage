@@ -101,7 +101,7 @@ void Storage::removeProduct(string name, double quantity){
 }
 
 vector<Product> Storage::sortByExpiryDate(vector<Product> products){
-    for(unsigned i =0; i<products.size(); i++){
+    for(unsigned i = 0; i<products.size(); i++){
 
     }
 }
