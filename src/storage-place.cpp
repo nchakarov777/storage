@@ -4,10 +4,10 @@ StoragePlace::StoragePlace(){
 
 }
 
-StoragePlace::StoragePlace(int section, int shelf, int number){
-    this->section = section;
-    this->shelf = shelf;
-    this->number = number;
+StoragePlace::StoragePlace(int se, int sh, int nu){
+    section = se;
+    shelf = sh;
+    number = nu;
 }
 
 
