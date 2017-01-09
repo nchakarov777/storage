@@ -18,7 +18,7 @@ private:
     string getProductId(Product product);
     StoragePlace getStoragePlace(string productId);
     void findNewPlaceAndAdd(Product, string, vector<Product>&);
-    vector<Product> sortByExpiryDate(vector<Product>&);
+    void sortByExpiryDate(vector<Product>&);
     double getAllSize(vector<Product>&);
     bool compareDates(string, string) const;
 
