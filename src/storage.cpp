@@ -26,7 +26,7 @@ string Storage::getProductId(Product product){
     return id;
 }
 
-void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product> products){
+void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& products){
     for(int i = 0;i<10;i++){
         for(int j = 0;j<10;j++){
             for(int k =0; k<10;k++){
@@ -95,14 +95,13 @@ void Storage::removeProduct(string name, double quantity){
     for(map<string, vector<Product>>::iterator it = availableProducts.begin(); it!=availableProducts.end(); it++ ){
         string id = it->first;
         if (id.find(name) != string::npos) {
-            foundProducts.push(it->second);
+            foundProducts.push_back(it->second);
         }
     }
 }
 
-vector<Product> Storage::sortByExpiryDate(vector<Product> products){
-    for(unsigned i = 0; i<products.size(); i++){
-
-    }
+vector<Product> Storage::sortByExpiryDate(vector<Product>& products){
+    //for(unsigned i = 0; i<products.size(); i++){
+    //}
 }
 

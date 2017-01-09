@@ -20,7 +20,7 @@ void StorageController::removeProduct(){
     cout<<"Enter the quantity you want to remove: ";
     double quantity;
     cin>>quantity;
-    storage.removeProducts(name, quantity);
+    storage.removeProduct(name, quantity);
 }
 
 void StorageController::listAvailableProducts(){
