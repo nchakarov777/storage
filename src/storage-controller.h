@@ -9,8 +9,6 @@ class StorageController
 {
 private:
     Storage storage;
-
-
 public:
     StorageController();
 	void addProduct();

@@ -1,7 +1,8 @@
-#include<iostream>
-#include<map>
-#include<vector>
-#include<algorithm>
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <stdlib.h>
 using namespace std;
 
 #include "Product.h"
@@ -15,8 +16,8 @@ private:
     int storageSpace[10][10][10];
     bool availableSpace[10][10][10];
 	map<string, vector<Product>> availableProducts;
-    string getProductId(Product product);
-    StoragePlace getStoragePlace(string productId);
+    string getProductId(Product); ///product
+    StoragePlace getStoragePlace(string); ///productId
     void findNewPlaceAndAdd(Product, string, vector<Product>&);
     void sortByExpiryDate(vector<Product>&);
     double getAllSize(vector<Product>&);

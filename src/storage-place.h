@@ -17,6 +17,9 @@ public:
 	int getSection();
 	int getShelf();
 	int getNumber();
+	void setSection(int);
+	void setShelf(int);
+	void setNumber(int);
 };
 
 #endif

@@ -1,8 +1,5 @@
 #include "Storage.h"
 #include "storage-place.h"
-#include <stdlib.h>
-#include <map>
-#include <vector>
 
 Storage::Storage(){
     for(int i = 0; i<10;i++){
@@ -17,6 +14,12 @@ Storage::Storage(){
             }
         }
     }
+    for(int i = 0; i<10;i++){
+        for(int j=0; j<10; j++){
+            for(int k=0; k<10; k++)
+                availableSpace[i][j][k] = false;
+        }
+    }
 }
 
 string Storage::getProductId(Product product){
@@ -29,7 +32,7 @@ string Storage::getProductId(Product product){
 void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& products){
     for(int i = 0;i<10;i++){
         for(int j = 0;j<10;j++){
-            for(int k =0; k<10;k++){
+            for(int k = 0;k<10;k++){
                 if(!availableSpace[i][j][k]){
                     if(storageSpace[i][j][k] >= product.getQuantity()){
                         product.setStoragePlace(i, j, k);
@@ -40,15 +43,15 @@ void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& pr
                         cout<<"Your product was successfully stored on place "<<i<<"/"<<j<<"/"<<k<<endl;
                         cout<<"There is "<<storageSpace[i][j][k]-product.getQuantity()<<" "<<product.getUnit()<<" free space in the same number."<<endl;
                         //TODO to file the addition
-                        return ;
+                        return ; ///return?
                     }
                 }
             }
         }
     }
     system("CLS");
-    cout<<"Sorry, either the storage is full, or the quantity you are trying to add is too big."<<endl;
-    return ;
+    cout<<"Sorry, either the storage is full, or the quantity you are trying to add is too much."<<endl;
+    return ; ///return?
 }
 
 void Storage::addProduct(Product product){

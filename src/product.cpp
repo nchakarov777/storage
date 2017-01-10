@@ -9,7 +9,7 @@ Product::Product(){
 	unit = "";
 	quantity = 0.0;
 	comment = "";
-	StoragePlace storagePlace();
+	//StoragePlace storagePlace();
 }
 
 bool Product::isValid(string fullDate){
@@ -27,6 +27,7 @@ bool Product::isValid(string fullDate){
 }
 
 void Product::input() {
+    int se, sh, nu;
 	cout << "Enter product name: ";
 	cin >> productName;
 	do{
@@ -54,6 +55,9 @@ void Product::input() {
 	cin >> producerName;
 	cout << "Enter quantity and units of the product(e.g. 10 kilograms): ";
 	cin >> quantity >> unit;
+	cout << "Enter product's place in the storage(section-->shelf-->number): ";
+	cin >> se >> sh >> nu;
+	storagePlace.setNumber(nu); storagePlace.setShelf(sh); storagePlace.setSection(se);
 }
 
 void Product::output() {
@@ -62,15 +66,16 @@ void Product::output() {
     cout << "Entry date: " << entryDate << endl;
     cout << "Producer name: " << producerName << endl;
     cout << "Quantity available : " << quantity << " " << unit << endl;
-    //cout << "Product's place in store:\n" << "section " << section << "; shelf " << shelf << "; number " << number << endl;
+    cout << "Product's place in store:\n" << "section " << storagePlace.getSection() << "; shelf " << storagePlace.getShelf()
+         << "; number " << storagePlace.getNumber() << endl;
 }
-
+///Не съм сигурен, че се прави така get-а, трябва да го оправим
 StoragePlace Product::getStoragePlace(){
     return storagePlace;
 }
 
 string Product::getProductName(){
-    return producerName;
+    return productName;
 }
 
 string Product::getExpDate(){
@@ -81,9 +86,10 @@ double Product::getQuantity(){
     return quantity;
 }
 
-void Product::setStoragePlace(int section, int shelf, int number){
-    StoragePlace newStoragePlace(section, shelf, number);
-    storagePlace = newStoragePlace;
+void Product::setStoragePlace(int se, int sh, int num){
+    storagePlace.setNumber(num);
+    storagePlace.setShelf(sh);
+    storagePlace.setSection(se);
 }
 
 void Product::setQuantity(double quantity){

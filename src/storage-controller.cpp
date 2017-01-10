@@ -1,5 +1,4 @@
 #include "storage-controller.h"
-#include <iostream>
 #include "product.h"
 #include "storage.h"
 
