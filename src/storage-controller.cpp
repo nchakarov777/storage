@@ -33,3 +33,7 @@ void StorageController::referenceDataRangeWork(){
 void StorageController::clearOutdatedProducts(){
 
 }
+
+void StorageController::sortIt(){
+    storage.sortByExpiryDate();
+}

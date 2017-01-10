@@ -43,7 +43,7 @@ void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& pr
                         cout<<"Your product was successfully stored on place "<<i<<"/"<<j<<"/"<<k<<endl;
                         cout<<"There is "<<storageSpace[i][j][k]-product.getQuantity()<<" "<<product.getUnit()<<" free space in the same number."<<endl;
                         //TODO to file the addition
-                        return ; ///return?
+                        return ;
                     }
                 }
             }
@@ -51,7 +51,6 @@ void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& pr
     }
     system("CLS");
     cout<<"Sorry, either the storage is full, or the quantity you are trying to add is too much."<<endl;
-    return ; ///return?
 }
 
 void Storage::addProduct(Product product){

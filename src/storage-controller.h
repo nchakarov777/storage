@@ -16,6 +16,7 @@ public:
 	void clearOutdatedProducts();
 	void listAvailableProducts();
 	void referenceDataRangeWork();
+	void sortIt();
 };
 
 #endif

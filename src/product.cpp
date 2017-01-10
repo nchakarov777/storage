@@ -9,7 +9,6 @@ Product::Product(){
 	unit = "";
 	quantity = 0.0;
 	comment = "";
-	//StoragePlace storagePlace();
 }
 
 bool Product::isValid(string fullDate){
@@ -27,7 +26,6 @@ bool Product::isValid(string fullDate){
 }
 
 void Product::input() {
-    int se, sh, nu;
 	cout << "Enter product name: ";
 	cin >> productName;
 	do{
@@ -55,9 +53,6 @@ void Product::input() {
 	cin >> producerName;
 	cout << "Enter quantity and units of the product(e.g. 10 kilograms): ";
 	cin >> quantity >> unit;
-	cout << "Enter product's place in the storage(section shelf number): ";
-	cin >> se >> sh >> nu;
-	storagePlace.setNumber(nu); storagePlace.setShelf(sh); storagePlace.setSection(se);
 }
 
 void Product::output() {
@@ -69,7 +64,7 @@ void Product::output() {
     cout << "Product's place in store:\n" << "section " << storagePlace.getSection() << "; shelf " << storagePlace.getShelf()
          << "; number " << storagePlace.getNumber() << ";" << endl;
 }
-///Не съм сигурен, че се прави така get-а, трябва да го оправим
+///Not sure if this getter is properly written, might not work or not work the way we want
 StoragePlace Product::getStoragePlace(){
     return storagePlace;
 }
@@ -86,10 +81,10 @@ double Product::getQuantity(){
     return quantity;
 }
 
-void Product::setStoragePlace(int se, int sh, int num){
-    storagePlace.setNumber(num);
-    storagePlace.setShelf(sh);
-    storagePlace.setSection(se);
+void Product::setStoragePlace(int Section, int Shelf, int Number){
+    storagePlace.setNumber(Number);
+    storagePlace.setShelf(Shelf);
+    storagePlace.setSection(Section);
 }
 
 void Product::setQuantity(double quantity){
