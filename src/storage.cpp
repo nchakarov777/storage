@@ -17,7 +17,7 @@ Storage::Storage(){
     for(int i = 0; i<10;i++){
         for(int j=0; j<10; j++){
             for(int k=0; k<10; k++)
-                availableSpace[i][j][k] = false;
+                availableSpace[i][j][k] = true;
         }
     }
 }
@@ -33,12 +33,12 @@ void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& pr
     for(int i = 0;i<10;i++){
         for(int j = 0;j<10;j++){
             for(int k = 0;k<10;k++){
-                if(!availableSpace[i][j][k]){
+                if(availableSpace[i][j][k]){
                     if(storageSpace[i][j][k] >= product.getQuantity()){
                         product.setStoragePlace(i, j, k);
                         products.push_back(product);
                         availableProducts.insert(pair<string, vector<Product>>(id, products));
-                        availableSpace[i][j][k] = true;
+                        availableSpace[i][j][k] = false;
                         system("CLS");
                         cout<<"Your product was successfully stored on place "<<i<<"/"<<j<<"/"<<k<<endl;
                         cout<<"There is "<<storageSpace[i][j][k]-product.getQuantity()<<" "<<product.getUnit()<<" free space in the same number."<<endl;
@@ -91,6 +91,7 @@ void Storage::listAvailableProducts(){
             products[i].output();
         }
     }
+    system("PAUSE");
 }
 
 void Storage::removeProduct(string name, double quantity){
@@ -98,16 +99,19 @@ void Storage::removeProduct(string name, double quantity){
     for(map<string, vector<Product>>::iterator it = availableProducts.begin(); it!=availableProducts.end(); it++ ){
         string id = it->first;
         if (id.find(name) != string::npos) {
-            foundProducts.push_back(it->second);
+            //foundProducts.push_back(it->second);
         }
     }
 }
 
+struct less_than_key{
+    inline bool operator()(Product product1, Product product2)
+    {
+        return (product1.getExpDate() < product2.getExpDate());
+    }
+};
+
 void Storage::sortByExpiryDate(vector<Product>& products){
-    vector<Product> Sortable;
-    for(unsigned i=0; i<products.size(); i++)
-        Sortable.push_back(products[i]);
-    //for(unsigned i = 0; i<products.size(); i++){
-    //}
+    sort(products.begin(), products.end(), less_than_key());
 }
 

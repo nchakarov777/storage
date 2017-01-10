@@ -55,7 +55,7 @@ void Product::input() {
 	cin >> producerName;
 	cout << "Enter quantity and units of the product(e.g. 10 kilograms): ";
 	cin >> quantity >> unit;
-	cout << "Enter product's place in the storage(section-->shelf-->number): ";
+	cout << "Enter product's place in the storage(section shelf number): ";
 	cin >> se >> sh >> nu;
 	storagePlace.setNumber(nu); storagePlace.setShelf(sh); storagePlace.setSection(se);
 }
@@ -67,7 +67,7 @@ void Product::output() {
     cout << "Producer name: " << producerName << endl;
     cout << "Quantity available : " << quantity << " " << unit << endl;
     cout << "Product's place in store:\n" << "section " << storagePlace.getSection() << "; shelf " << storagePlace.getShelf()
-         << "; number " << storagePlace.getNumber() << endl;
+         << "; number " << storagePlace.getNumber() << ";" << endl;
 }
 ///Не съм сигурен, че се прави така get-а, трябва да го оправим
 StoragePlace Product::getStoragePlace(){

@@ -35,8 +35,9 @@ void validateAndExecuteCommand(int command){
 int main(){
 
     while(!stopMenu){
+        system("cls");
         printMenu();
-        cin>>command;
+        cin>>command; system("cls");
         validateAndExecuteCommand(command);
     }
 }
