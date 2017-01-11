@@ -15,13 +15,13 @@ class Storage
 private:
     int storageSpace[10][10][10];
     bool availableSpace[10][10][10];
-	map<string, vector<Product>> availableProducts;
-    string getProductId(Product); ///product
+	map<string, vector<Product> > availableProducts;
+    string getProductId(Product);
     StoragePlace getStoragePlace(string); ///productId
     void findNewPlaceAndAdd(Product, string, vector<Product>&);
     void sortByExpiryDate(vector<Product>&);
     double getAllSize(vector<Product>&);
-    bool compareDates(string, string) const;
+    double getProductQuantity(vector<Product>&) const;
 
 public:
 	Storage();
