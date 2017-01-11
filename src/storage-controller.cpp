@@ -1,5 +1,4 @@
 #include "storage-controller.h"
-#include <iostream>
 #include "product.h"
 #include "storage.h"
 
@@ -20,7 +19,7 @@ void StorageController::removeProduct(){
     cout<<"Enter the quantity you want to remove: ";
     double quantity;
     cin>>quantity;
-    storage.removeProducts(name, quantity);
+    storage.removeProduct(name, quantity);
 }
 
 void StorageController::listAvailableProducts(){
@@ -33,4 +32,8 @@ void StorageController::referenceDataRangeWork(){
 
 void StorageController::clearOutdatedProducts(){
 
+}
+
+void StorageController::sortIt(){
+    //storage.sortByExpiryDate();
 }

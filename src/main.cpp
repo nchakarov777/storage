@@ -36,7 +36,7 @@ int main(){
 
     while(!stopMenu){
         printMenu();
-        cin>>command;
+        cin>>command; system("cls");
         validateAndExecuteCommand(command);
     }
 }

@@ -9,8 +9,6 @@ class StorageController
 {
 private:
     Storage storage;
-
-
 public:
     StorageController();
 	void addProduct();
@@ -18,6 +16,7 @@ public:
 	void clearOutdatedProducts();
 	void listAvailableProducts();
 	void referenceDataRangeWork();
+	void sortIt();
 };
 
 #endif

@@ -1,6 +1,8 @@
-#include<iostream>
-#include<map>
-#include<vector>
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <stdlib.h>
 using namespace std;
 
 #include "Product.h"
@@ -13,19 +15,19 @@ class Storage
 private:
     int storageSpace[10][10][10];
     bool availableSpace[10][10][10];
-	map<string, vector<Product>> availableProducts;
-    string getProductId(Product product);
-    StoragePlace getStoragePlace(string productId);
-    void findNewPlaceAndAdd(Product, string, vector<Product>);
-    vector<Product> sortByExpiryDate(vector<Product>);
-    double getAllSize(vector<Product>);
-    bool compareDates(string, string) const;
+	map<string, vector<Product> > availableProducts;
+    string getProductId(Product);
+    StoragePlace getStoragePlace(string); ///productId
+    void findNewPlaceAndAdd(Product, string, vector<Product>&);
+    void sortByExpiryDate(vector<Product>&);
+    double getAllSize(vector<Product>&);
+    double getProductQuantity(vector<Product>&) const;
 
 public:
 	Storage();
 	void addProduct(Product);
 	void listAvailableProducts();
-    void removeProducts(string, double);
+    void removeProduct(string, double);
     void clearProducts();
 
 };
