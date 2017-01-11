@@ -35,5 +35,5 @@ void StorageController::clearOutdatedProducts(){
 }
 
 void StorageController::sortIt(){
-    storage.sortByExpiryDate();
+    //storage.sortByExpiryDate();
 }

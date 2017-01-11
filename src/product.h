@@ -13,7 +13,7 @@ class Product
 {
 private:
 	string productName;
-	// dd.mm.yyyy format
+	// yyyy.mm.dd format
 	string expDate;
 	string entryDate;
 	string producerName;
