@@ -1,6 +1,7 @@
 #include "Storage.h"
 #include "storage-place.h"
 #include <algorithm>
+#include <time.h>
 
 Storage::Storage(){
     for(int i = 0; i<10;i++){
@@ -30,7 +31,7 @@ string Storage::getProductId(Product product){
     return id;
 }
 
-void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& products){
+void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& products, bool show){
     for(int i = 0;i<10;i++){
         for(int j = 0;j<10;j++){
             for(int k = 0;k<10;k++){
@@ -40,21 +41,25 @@ void Storage::findNewPlaceAndAdd(Product product, string id, vector<Product>& pr
                         products.push_back(product);
                         availableProducts.insert(pair<string, vector<Product> >(id, products));
                         availableSpace[i][j][k] = false;
-                        system("CLS");
-                        cout<<"Your product was successfully stored on place "<<i<<"/"<<j<<"/"<<k<<endl;
-                        cout<<"There is "<<storageSpace[i][j][k]-product.getQuantity()<<" "<<product.getUnit()<<" free space in the same number."<<endl;
-                        //TODO to file the addition
+                        if(show){
+                            system("CLS");
+                            cout<<"Your product was successfully stored on place "<<i<<"/"<<j<<"/"<<k<<endl;
+                            cout<<"There is "<<storageSpace[i][j][k]-product.getQuantity()<<" "<<product.getUnit()<<" free space in the same number."<<endl;
+                            //TODO to file the addition
+                        }
                         return ;
                     }
                 }
             }
         }
     }
-    system("CLS");
-    cout<<"Sorry, either the storage is full, or the quantity you are trying to add is too much."<<endl;
+    if(show){
+        system("CLS");
+        cout<<"Sorry, either the storage is full, or the quantity you are trying to add is too much."<<endl;
+    }
 }
 
-void Storage::addProduct(Product product){
+void Storage::addProduct(Product product, bool show){
     string id = getProductId(product);
     map<string, vector<Product> >::iterator it = availableProducts.find(id);
     vector<Product> products;
@@ -70,26 +75,33 @@ void Storage::addProduct(Product product){
             double newQuantity = products[i].getQuantity() + product.getQuantity();
             if( newQuantity <= storageSpace[currentPlace.getSection()][currentPlace.getShelf()][currentPlace.getNumber()]){
                 products[i].setQuantity(newQuantity);
-                system("CLS");
-                cout<<"The product "<<product.getProductName()<<" was stored on place "<<currentPlace.getSection()<<"/"<<currentPlace.getShelf()<<"/"<<currentPlace.getNumber()<<endl;
-                cout<<"There is "<<storageSpace[currentPlace.getSection()][currentPlace.getShelf()][currentPlace.getNumber()]-newQuantity<<" "<<product.getUnit()<<" free space in the same number."<<endl;
-                //TODO to file the addition
+                if(show){
+                    system("CLS");
+                    cout<<"The product "<<product.getProductName()<<" was stored on place "<<currentPlace.getSection()<<"/"<<currentPlace.getShelf()<<"/"<<currentPlace.getNumber()<<endl;
+                    cout<<"There is "<<storageSpace[currentPlace.getSection()][currentPlace.getShelf()][currentPlace.getNumber()]-newQuantity<<" "<<product.getUnit()<<" free space in the same number."<<endl;
+                    ///TODO to file the addition
+                }
                 return;
             }
         }
-        findNewPlaceAndAdd(product, id, products);
+        findNewPlaceAndAdd(product, id, products, show);
     }else{
         vector<Product> newVector;
-        findNewPlaceAndAdd(product, id, newVector);
+        findNewPlaceAndAdd(product, id, newVector, show);
     }
 }
 
 void Storage::listAvailableProducts(){
+    bool found = false;
     for(map<string, vector<Product> >::iterator it = availableProducts.begin(); it!=availableProducts.end(); it++ ){
         vector<Product> products = it->second;
         for(unsigned i = 0;i<products.size(); i++ ){
             products[i].output();
+            found = true;
         }
+    }
+    if(!found){
+        cout<<"The storage is empty."<<endl;
     }
     system("PAUSE");
 }
@@ -117,8 +129,11 @@ void Storage::removeProduct(string name, double quantity){
             cin>>command;
         }
         if(command == 'y'){
-            //removeAll(name);
+            cout<<"All products with name: "<<name<<" were removed."<<endl;
         }else{
+            for(unsigned i = 0;i < foundProducts.size(); i++){
+                addProduct(foundProducts[i], false);
+            }
             return;
         }
     }
@@ -126,6 +141,7 @@ void Storage::removeProduct(string name, double quantity){
         if(foundProducts[i].getQuantity()>quantity){
             cout<<"Removing "<<quantity<<" from :"<<endl;
             foundProducts[i].output();
+            foundProducts[i].setQuantity(foundProducts[i].getQuantity()- quantity);
             break;
         }
         if(foundProducts[i].getQuantity()<=quantity){
@@ -138,7 +154,7 @@ void Storage::removeProduct(string name, double quantity){
     }
 
     for(unsigned i = 0; i<foundProducts.size(); i++){
-        addProduct(foundProducts[i]);
+        addProduct(foundProducts[i], false);
     }
 
 }
@@ -160,5 +176,29 @@ double Storage::getProductQuantity(vector<Product>& products) const{
         sum += products[i].getQuantity();
     }
     return sum;
+}
+void Storage::clearOutdatedProducts(){
+    for(map<string, vector<Product> >::iterator it = availableProducts.begin(); it!=availableProducts.end(); it++ ){
+        string id = it->first;
+        size_t pos = id.find("/");
+        string date = id.substr (pos+1);
+        if(date<getCurrentDate()){
+            for(unsigned i = 0;i<it->second.size(); i++){
+                cout<<"Removing product: "<<endl;
+                it->second[i].output();
+            }
+            availableProducts.erase(it);
+        }
+    }
+}
+
+string Storage::getCurrentDate() const {
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    strftime(buf, sizeof(buf), "%Y.%m.%d", &tstruct);
+
+    return buf;
 }
 

@@ -9,7 +9,7 @@ StorageController::StorageController(){
 void StorageController::addProduct(){
     Product newProduct;
     newProduct.input();
-    storage.addProduct(newProduct);
+    storage.addProduct(newProduct, true);
 }
 
 void StorageController::removeProduct(){
@@ -31,9 +31,6 @@ void StorageController::referenceDataRangeWork(){
 }
 
 void StorageController::clearOutdatedProducts(){
-
+    storage.clearOutdatedProducts();
 }
 
-void StorageController::sortIt(){
-    //storage.sortByExpiryDate();
-}
